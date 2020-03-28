@@ -1,0 +1,3 @@
+def getState():
+    output = 'FULDUDRDRUFBFRLURDFLBUFRRBBBDLLDULLRLRUBLBDBDDFUFBRFUF'
+    return output
