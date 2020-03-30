@@ -1,12 +1,12 @@
 from Scramble import scramble
 from solgen import getsolution
 import sys, getopt
-
+from stepperctrl import move
 algorithm=""
 
 def main(argv):
     try:
-        opts, args = getopt.getopt(argv,"brs:")
+        opts, args = getopt.getopt(argv,"rs:")
     except getopt.GetoptError:
             print("command argument error")
 
@@ -21,15 +21,10 @@ def main(argv):
             algorithm = scramble()
             print(algorithm)
             sys.exit(0)
-        elif opt == "-b":
-            algorithm = scramble()
-            print(algorithm)
-            algorithm = getsolution()
-            print(algorithm)
-            sys.exit(0)
+        
 def solve(algo):
-    for move in algo:
-        stepper
+    for moves in algo:
+        move(moves)
 
 if __name__ == "__main__":
     main(sys.argv[1:])

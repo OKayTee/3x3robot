@@ -21,6 +21,7 @@ def getsolution():
         output = output[:pos]+chr(doubles.find(output[pos])+86) + output[pos+1:]
         
         output = output.replace("2","",1)
-    
+    #print(output)
     output = output.replace(" ","") #remove spaces
-    
+#if __name__ == "__main__":
+    #getsolution()
