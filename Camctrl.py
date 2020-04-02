@@ -21,7 +21,7 @@ def recog():
     for x in range (10):
         for y in  range(10):
             
-            values[z][0], values[z][1], values[z][2] = pix[(x+320), (y+88)]
+            values[z][0], values[z][1], values[z][2] = pix[(x+236), (y+330)]
             valueshsv[z][0], valueshsv[z][1], valueshsv[z][2] = colorsys.rgb_to_hsv((values[z][0]/255),(values[z][1]/255),(values[z][2]/255))
             valueshsv[z][0] = valueshsv[z][0]*360
             valueshsv[z][1] = valueshsv[z][1]*100
