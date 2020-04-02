@@ -16,14 +16,17 @@ def up(ang):
         for i in range(50):
             kit1.stepper1.onestep()
             time.sleep(0.01)
+        
     elif ang == 1:
         for i in range(50):
             kit1.stepper1.onestep(direction=stepper.BACKWARD)
             time.sleep(0.01)
+        
     elif ang == 2:
         for i in range(100):
             kit1.stepper1.onestep()
             time.sleep(0.01)
+    kit1.stepper1.release()
 
 def down(ang):
     if ang == 0:
@@ -38,7 +41,8 @@ def down(ang):
         for i in range(100):
             kit1.stepper2.onestep()
             time.sleep(0.01)
-          
+    kit1.stepper2.release()  
+
 def front(ang):
     if ang == 0:
         for i in range(50):
@@ -52,6 +56,8 @@ def front(ang):
         for i in range(100):
             kit2.stepper1.onestep()
             time.sleep(0.01)
+    kit2.stepper1.release()
+
 def behind(ang):
     if ang == 0:
         for i in range(50):
@@ -65,6 +71,7 @@ def behind(ang):
         for i in range(100):
             kit2.stepper2.onestep()
             time.sleep(0.01)
+    kit2.stepper2.release()
 
 def left(ang):
     if ang == 0:
@@ -79,6 +86,7 @@ def left(ang):
         for i in range(100):
             kit3.stepper1.onestep()
             time.sleep(0.01)
+    kit3.stepper1.release()
 
 def right(ang):
     if ang == 0:
@@ -93,7 +101,8 @@ def right(ang):
         for i in range(100):
             kit3.stepper2.onestep()
             time.sleep(0.01)
-
+    kit3.stepper2.release()
+    
 dictionary = {
         "U": up(0),
         "u": up(1)
