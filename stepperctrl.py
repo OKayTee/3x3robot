@@ -105,22 +105,22 @@ def right(ang):
     
 dictionary = {
         "U": up(0),
-        "u": up(1)
-        "F": front(0)
-        "f": front(1)
-        "R": right(0)
-        "r": right(1)
-        "B": behind(0)
-        "b": behind(1)
-        "L": left(0)
-        "l": left(1)
-        "D": down(0)
-        "d": down(1)
-        "V": up(2)
-        "W": front(2)
-        "X": right(2)
-        "Y": behind(2)
-        "Z": left(2)
+        "u": up(1),
+        "F": front(0),
+        "f": front(1),
+        "R": right(0),
+        "r": right(1),
+        "B": behind(0),
+        "b": behind(1),
+        "L": left(0),
+        "l": left(1),
+        "D": down(0),
+        "d": down(1),
+        "V": up(2),
+        "W": front(2),
+        "X": right(2),
+        "Y": behind(2),
+        "Z": left(2),
         "[": down(2)
         
     }
