@@ -23,5 +23,6 @@ def getsolution():
         output = output.replace("2","",1)
     #print(output)
     output = output.replace(" ","") #remove spaces
+    return output
 #if __name__ == "__main__":
     #getsolution()

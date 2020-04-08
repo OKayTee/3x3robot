@@ -1,12 +1,14 @@
 from Scramble import scramble
 from solgen import getsolution
 import sys, getopt
-from stepperctrl import move
-algorithm=""
+#from stepperctrl import move
+
+
+
 
 def main(argv):
     try:
-        opts, args = getopt.getopt(argv,"rs:")
+        opts, args = getopt.getopt(argv,"rsh:")
     except getopt.GetoptError:
             print("command argument error")
 
@@ -14,17 +16,17 @@ def main(argv):
     for opt, arg in opts:
         if opt == "-r":
             algorithm = getsolution()
-            #print(algorithm)
-            solve(algorithm)
+            print(algorithm)
+            #solve(algorithm)
             sys.exit(0)
         elif opt == "-s":
             algorithm = scramble()
             print(algorithm)
             sys.exit(0)
         
-def solve(algo):
-    for moves in algo:
-        move(moves)
+#def solve(algo):
+    #for moves in algo:
+        #move(moves)
 
 if __name__ == "__main__":
     main(sys.argv[1:])

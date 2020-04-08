@@ -22,28 +22,35 @@ def getvalues():
     for a,b,c in coords:
         z=0
         values = [[0 for cols in range(3)] for rows in range (100)]
-        #valueshsv = [[0.0 for cols in range(3)] for rows in range(100)]
+        
         for x in range (10):        #collect data from a 10x10 grid for accuracy
             for y in  range(10):
                 
                 values[z][0], values[z][1], values[z][2] = pix[(x+a), (y+b)]
-               # valueshsv[z][0], valueshsv[z][1], valueshsv[z][2] = colorsys.rgb_to_hsv((values[z][0]/255),(values[z][1]/255),(values[z][2]/255)) #convert all values to hsv
-               # valueshsv[z][0] = valueshsv[z][0]*360
-                #valueshsv[z][1] = valueshsv[z][1]*100
-                #valueshsv[z][2] = valueshsv[z][2]*100
+              
                 z=z+1
         r,g,b = geomean(values)
         h,s,v = colorsys.rgb_to_hsv(r/255,g/255,b/255)
         h = round(h*360)
         s = round(s*100)
         v = round(v*100)
-        results.append([h,s,v])   #calculate the geometrical mean of the 100 values and add the result to the output array
-    print(results)
-    output = [recognise(result) for result in results]
-    print(output)
+        results.append([h,s,v,c])   #calculate the geometrical mean of the 100 values and add the result to the output array
+    
+    results = arrsort(results)
+    output = [recognise([h,s,v]) for h,s,v,c in results]
+    return output
 
 def getState():
-    output = 'FULDUDRDRUFBFRLURDFLBUFRRBBBDLLDULLRLRUBLBDBDDFUFBRFUF'
+    state = getvalues()
+    state.insert(4, 'U')
+    state.insert(13, 'R')
+    state.insert(22, 'F')
+    state.insert(31, 'D')
+    state.insert(40, 'L')
+    state.insert(49, 'B')
+    output = ""
+    for move in state:
+        output+=move
     return output
 
 def geomean(values):
@@ -75,17 +82,17 @@ def recognise(color):
 
     
     if between(color,red_low,red_high) or between(color,red_low2,red_high2):
-        return "red"
+        return "R"
     elif between(color,orange_low,orange_high):
-        return "orange"
+        return "L"
     elif between(color,yellow_low,yellow_high):
-        return "yellow" 
+        return "D" 
     elif between(color,green_low,green_high):
-        return "green"    
+        return "F"    
     elif between(color, blue_low, blue_high):
-        return "blue"
+        return "B"
     else:
-        return "white"
+        return "U"
 
 def between(src,lower,upper):
     if src[0]>=lower[0] and src[0]<=upper[0] and src[1]>=lower[1] and src[1]<=upper[1] and src[2]>=lower[2] and src[2]<=upper[2]:
@@ -93,5 +100,19 @@ def between(src,lower,upper):
     else:
         return False
 
+def arrsort(arr):
+    isSorted = False
+    while  not isSorted:
+        isSorted= True
+        for i in range(len(arr)):
+            if i>0:
+                if arr[i][3]<arr[i-1][3]:
+                    buffer = arr[i]
+                    arr[i] = arr[i-1]
+                    arr[i-1] = buffer
+                    isSorted = False
+    return arr
+
 if __name__ =="__main__":
-        getvalues()
+        state = getState()
+        print(state)
