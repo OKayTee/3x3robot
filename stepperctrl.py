@@ -123,4 +123,4 @@ dictionary = {
         "Z": left(2),
         "[": down(2)
         
-    }
+      }
