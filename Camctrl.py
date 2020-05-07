@@ -7,12 +7,13 @@ import json
 coords = json.loads(open("training_coords.json").read())
 
 def capture():  #open specific webcam and capture an image
-    video_capture = cv2.VideoCapture(0)
-    if not video_capture.isOpened():
-        raise Exception("Could not open video device")
-    ret, frame = video_capture.read()
-    cv2.imwrite("test.png",frame)
-    video_capture.release()
+    for i in range(4):   
+        video_capture = cv2.VideoCapture(i)
+        if not video_capture.isOpened():
+            raise Exception("Could not open video device")
+        ret, frame = video_capture.read()
+        cv2.imwrite("test"+i+".png",frame)
+        video_capture.release()
 
 def getvalues():
     im = Image.open("training.jpg")
@@ -23,9 +24,9 @@ def getvalues():
         z=0
         values = [[0 for cols in range(3)] for rows in range (100)]
         
-        for x in range (10):        #collect data from a 10x10 grid for accuracy
+        for x in range (10):        #collect data from a 10x10 grid
             for y in  range(10):
-                
+                jg
                 values[z][0], values[z][1], values[z][2] = pix[(x+a), (y+b)]
               
                 z=z+1
