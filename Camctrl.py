@@ -5,9 +5,9 @@ import colorsys
 import json
 
 coords = json.loads(open("training_coords.json").read())
-
+cameras = [0,2,4,6]
 def capture():  #open specific webcam and capture an image
-    for i in range(4):   
+    for i in cameras:   
         video_capture = cv2.VideoCapture(i)
         if not video_capture.isOpened():
             raise Exception("Could not open video device")
