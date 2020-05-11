@@ -25,43 +25,44 @@ kit3 = MotorKit(address = 0x62) #L,R
         "Z": left(2),
         "[": down(2)
 '''
-def move(moves):
-    if moves == "U":
-        up(0)
-    elif moves == "u":
-        up(1)
-    elif moves = "V":
-        up(2)
-    elif moves == "F":
-        front(0)
-    elif moves == "f":
-        front(1)
-    elif moves = "W":
-        front(2)
-    elif moves == "R":
-        right(0)
-    elif moves == "r":
-        right(1)
-    elif moves = "X":
-        right(2)
-    elif moves == "B":
-        behind(0)
-    elif moves == "b":
-        behind(1)
-    elif moves = "Y":
-        behind(2)
-    elif moves == "L":
-        left(0)
-    elif moves == "l":
-        left(1)
-    elif moves = "Z":
-        left(2)
-    elif moves == "D":
-        down(0)
-    elif moves == "d":
-        down(1)
-    elif moves = "[":
-        down(2)
+def move(algorithm):
+    for moves in algorithm:
+        if moves == "U":
+            up(0)
+        elif moves == "u":
+            up(1)
+        elif moves == "V":
+            up(2)
+        elif moves == "F":
+            front(0)
+        elif moves == "f":
+            front(1)
+        elif moves == "W":
+            front(2)
+        elif moves == "R":
+            right(0)
+        elif moves == "r":
+            right(1)
+        elif moves == "X":
+            right(2)
+        elif moves == "B":
+            behind(0)
+        elif moves == "b":
+            behind(1)
+        elif moves == "Y":
+            behind(2)
+        elif moves == "L":
+            left(0)
+        elif moves == "l":
+            left(1)
+        elif moves == "Z":
+            left(2)
+        elif moves == "D":
+            down(0)
+        elif moves == "d":
+            down(1)
+        elif moves == "[":
+            down(2)
     
 
 def up(ang):
@@ -76,7 +77,7 @@ def up(ang):
             time.sleep(0.01)
         
     elif ang == 2:
-        for i in range(100):
+        for i in range(101):
             kit1.stepper1.onestep()
             time.sleep(0.01)
     kit1.stepper1.release()
@@ -87,11 +88,11 @@ def down(ang):
             kit1.stepper2.onestep()
             time.sleep(0.01)
     elif ang == 1:
-        for i in range(51):
-            kit1.stepper2.onestep(direction=stepper.BACKWARD)
+        for i in range(101):
+            kit1.stepper2.onestep(direction=stepper.BACKWARD, style = stepper.INTERLEAVE)
             time.sleep(0.01)
     elif ang == 2:
-        for i in range(100):
+        for i in range(101):
             kit1.stepper2.onestep()
             time.sleep(0.01)
     kit1.stepper2.release()  
@@ -106,7 +107,7 @@ def front(ang):
             kit2.stepper1.onestep(direction=stepper.BACKWARD)
             time.sleep(0.01)
     elif ang == 2:
-        for i in range(100):
+        for i in range(101):
             kit2.stepper1.onestep()
             time.sleep(0.01)
     kit2.stepper1.release()
@@ -121,7 +122,7 @@ def behind(ang):
             kit2.stepper2.onestep(direction=stepper.BACKWARD)
             time.sleep(0.01)
     elif ang == 2:
-        for i in range(100):
+        for i in range(101):
             kit2.stepper2.onestep()
             time.sleep(0.01)
     kit2.stepper2.release()
@@ -136,7 +137,7 @@ def left(ang):
             kit3.stepper1.onestep(direction=stepper.BACKWARD)
             time.sleep(0.01)
     elif ang == 2:
-        for i in range(100):
+        for i in range(101):
             kit3.stepper1.onestep()
             time.sleep(0.01)
     kit3.stepper1.release()
@@ -151,7 +152,7 @@ def right(ang):
             kit3.stepper2.onestep(direction=stepper.BACKWARD)
             time.sleep(0.01)
     elif ang == 2:
-        for i in range(100):
+        for i in range(101):
             kit3.stepper2.onestep()
             time.sleep(0.01)
     kit3.stepper2.release()
