@@ -26,7 +26,6 @@ def getvalues():
         
         for x in range (10):        #collect data from a 10x10 grid
             for y in  range(10):
-                jg
                 values[z][0], values[z][1], values[z][2] = pix[(x+a), (y+b)]
               
                 z=z+1
@@ -38,11 +37,12 @@ def getvalues():
         results.append([h,s,v,c])   #calculate the geometrical mean of the 100 values and add the result to the output array
     
     results = arrsort(results)
-    output = [recognise([h,s,v]) for h,s,v,c in results]
+    output = [recognise([h,s,v]) for h,s,v,c in results] #send each element through color recognition
     return output
 
 def getState():
     state = getvalues()
+    #insert the colors of the centers into the output
     state.insert(4, 'U')
     state.insert(13, 'R')
     state.insert(22, 'F')
@@ -95,13 +95,13 @@ def recognise(color):
     else:
         return "U"
 
-def between(src,lower,upper):
+def between(src,lower,upper): #check if input value is between other two values 
     if src[0]>=lower[0] and src[0]<=upper[0] and src[1]>=lower[1] and src[1]<=upper[1] and src[2]>=lower[2] and src[2]<=upper[2]:
         return True
     else:
         return False
 
-def arrsort(arr):
+def arrsort(arr):       #sort the array of coordinates to correspond with the tile order the solving algorithm requires
     isSorted = False
     while  not isSorted:
         isSorted= True
@@ -114,6 +114,23 @@ def arrsort(arr):
                     isSorted = False
     return arr
 
+def calibrate():
+    i=0
+    coordpos = 0
+    for camera in cameras:
+        video = cv2.VideoCapture(camera)
+        while(True):
+            ret, frame = video.read()
+            i=coordpos
+            while(coords[i][3]==camera):
+                cv2.rectangle(frame,(coords[i][0],coords[i][1]),(coords[i][0]+10,coords[i][1]+10),(0,0,0),-1) 
+                #for each coordinate to be observed place a rectangle on the window
+                i+=1
+            cv2.imshow("Calibrate",frame)
+            key=cv2.waitKey(1)
+            coordpos =  i
+            if key == ord('q'):
+                break
+
 if __name__ =="__main__":
-        state = getState()
-        print(state)
+        calibrate()

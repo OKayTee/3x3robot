@@ -1,6 +1,7 @@
 from Scramble import scramble
 from solgen import getsolution
 import sys, getopt
+from Camctrl import calibrate
 #from stepperctrl import move
 
 
@@ -8,25 +9,33 @@ import sys, getopt
 
 def main(argv):
     try:
-        opts, args = getopt.getopt(argv,"rsh:")
+        opts, args = getopt.getopt(argv,"rschu:")
     except getopt.GetoptError:
-            print("command argument error")
+            print("Command Argument Error")
+            print("Run with -h for help")
 
             sys.exit(2)
     for opt, arg in opts:
-        if opt == "-r":
+        if opt == "-r":  #launch in solve mode
             algorithm = getsolution()
             print(algorithm)
-            #solve(algorithm)
+            solve(algorithm)
             sys.exit(0)
-        elif opt == "-s":
+        elif opt == "-s":   #launch in scramble mode
             algorithm = scramble()
             print(algorithm)
+            solve(algorithm)
             sys.exit(0)
+        elif opt == :"-c":   #launch in calibrate mode
+            calibrate()
         
-#def solve(algo):
-    #for moves in algo:
-        #move(moves)
+        elif opt == "-h":
+            print("-s   -   scramble mode")
+            print("-r   -   resolve mode")
+            print("-c   -   calibrate mode")
+            print("-h   -   display help")
+def solve(algorithm):
+    move(algorithm)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
