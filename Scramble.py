@@ -1,6 +1,6 @@
 from random import randint
 
-moves = ['U','u','F','f','L','l','R','r','B','b','D','d','1','2','3','4','5','6']
+moves = ['U','u','F','f','L','l','R','r','B','b','D','d','V','W','X','Y','Z','[']
 
 def scramble():
     output = ""
