@@ -7,41 +7,43 @@ import json
 coords = json.loads(open("training_coords.json").read())
 cameras = [0,2,4,6]
 def capture():  #open specific webcam and capture an image
+    results = []
     for i in cameras:   
         video_capture = cv2.VideoCapture(i)
         if not video_capture.isOpened():
             raise Exception("Could not open video device")
         ret, frame = video_capture.read()
-        cv2.imwrite("test"+i+".png",frame)
+        filename = "capture"+i+".png"
+        cv2.imwrite(filename,frame)
         video_capture.release()
-
-def getvalues():
-    im = Image.open("training.jpg")
-    results = []
-    pix = im.load()
-    output = []
-    for a,b,c in coords:
-        z=0
-        values = [[0 for cols in range(3)] for rows in range (100)]
         
-        for x in range (10):        #collect data from a 10x10 grid
-            for y in  range(10):
-                values[z][0], values[z][1], values[z][2] = pix[(x+a), (y+b)]
-              
-                z=z+1
-        r,g,b = geomean(values)
-        h,s,v = colorsys.rgb_to_hsv(r/255,g/255,b/255)
-        h = round(h*360)
-        s = round(s*100)
-        v = round(v*100)
-        results.append([h,s,v,c])   #calculate the geometrical mean of the 100 values and add the result to the output array
-    
+        im = Image.open(filename)
+        
+        pix = im.load()
+        output = []
+        for a,b,c,d in coords:
+            while(d==i):
+                z=0
+                values = [[0 for cols in range(3)] for rows in range (100)]
+                
+                for x in range (10):        #collect data from a 10x10 grid
+                    for y in  range(10):
+                        values[z][0], values[z][1], values[z][2] = pix[(x+a), (y+b)]
+                    
+                        z=z+1
+                r,g,b = geomean(values)
+                h,s,v = colorsys.rgb_to_hsv(r/255,g/255,b/255)
+                h = round(h*360)
+                s = round(s*100)
+                v = round(v*100)
+                results.append([h,s,v,c])   #calculate the geometrical mean of the 100 values and add the result to the output array
+        
     results = arrsort(results)
     output = [recognise([h,s,v]) for h,s,v,c in results] #send each element through color recognition
     return output
 
 def getState():
-    state = getvalues()
+    state = capture()
     #insert the colors of the centers into the output
     state.insert(4, 'U')
     state.insert(13, 'R')
