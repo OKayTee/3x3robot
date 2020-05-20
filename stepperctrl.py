@@ -25,49 +25,49 @@ kit3 = MotorKit(address = 0x62) #L,R
         "Z": left(2),
         "[": down(2)
 '''
-def move(algorithm):
-    for moves in algorithm:
-        if moves == "U":
-            up(0)
-        elif moves == "u":
-            up(1)
-        elif moves == "V":
-            up(2)
-        elif moves == "F":
-            front(0)
-        elif moves == "f":
-            front(1)
-        elif moves == "W":
-            front(2)
-        elif moves == "R":
-            right(0)
-        elif moves == "r":
-            right(1)
-        elif moves == "X":
-            right(2)
-        elif moves == "B":
-            behind(0)
-        elif moves == "b":
-            behind(1)
-        elif moves == "Y":
-            behind(2)
-        elif moves == "L":
-            left(0)
-        elif moves == "l":
-            left(1)
-        elif moves == "Z":
-            left(2)
-        elif moves == "D":
-            down(0)
-        elif moves == "d":
-            down(1)
-        elif moves == "[":
-            down(2)
-        time.sleep(0.5)
+def move(moves):
+    if moves == "U":
+        up(0)
+    elif moves == "u":
+        up(1)
+    elif moves == "V":
+        up(2)
+    elif moves == "F":
+        front(0)
+    elif moves == "f":
+        front(1)
+    elif moves == "W":
+        front(2)
+    elif moves == "R":
+        right(0)
+    elif moves == "r":
+        right(1)
+    elif moves == "X":
+        right(2)
+    elif moves == "B":
+        behind(0)
+    elif moves == "b":
+        behind(1)
+    elif moves == "Y":
+        behind(2)
+    elif moves == "L":
+        left(0)
+    elif moves == "l":
+        left(1)
+    elif moves == "Z":
+        left(2)
+    elif moves == "D":
+        down(0)
+    elif moves == "d":
+        down(1)
+    elif moves == "[":
+        down(2)
+    time.sleep(0.5)
 
 def up(ang):
     if ang == 0:
         for i in range(51):
+            print("test")
             kit1.stepper1.onestep(style = stepper.DOUBLE)
             time.sleep(0.01)
         
