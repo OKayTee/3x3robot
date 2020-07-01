@@ -26,9 +26,15 @@ def main(argv):
             print(algorithm)
             solve(algorithm)
             sys.exit(0)
-        elif opt == :"-c":   #launch in calibrate mode
+        elif opt == "-c":   #launch in calibrate mode
             calibrate()
-        
+        elif opt == "-m":
+            while(True):
+                turn = input()
+                move(turn)
+                if turn =="Q":
+                    break
+                
         elif opt == "-h":
             print("-s   -   scramble mode")
             print("-r   -   resolve mode")
