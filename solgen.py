@@ -2,7 +2,14 @@ import kociemba
 from Camctrl import getState
 doubles = "UFRBLD"
 def getsolution():
-    output = kociemba.solve(getState())
+    try:
+        state = getState()
+        output = kociemba.solve(state)
+    except ValueError:
+        print("Invalid cubestring, invalid info from color recognition.")
+        print(state)
+        sys.exit(0)
+
     print("########################################################\nGenerated solution:\n")
     print(output+"\n")
     print("########################################################\n")
