@@ -4,7 +4,7 @@ import numpy as np
 import colorsys
 import json
 
-coords = json.loads(open("training_coords.json").read())
+coords = json.loads(open("coordinates.json").read())
 cameras = [0,2,4,6]
 def capture():  #open specific webcam and capture an image
     results = []
@@ -83,7 +83,6 @@ def recognise(color):
     blue_low = [200,20,30]
     blue_high = [260,100,100]
 
-    
     if between(color,red_low,red_high) or between(color,red_low2,red_high2):
         return "R"
     elif between(color,orange_low,orange_high):
@@ -94,9 +93,8 @@ def recognise(color):
         return "F"    
     elif between(color, blue_low, blue_high):
         return "B"
-    else:
-        return "U"
-
+    else: return "U"
+    
 def between(src,lower,upper): #check if input value is between other two values 
     if src[0]>=lower[0] and src[0]<=upper[0] and src[1]>=lower[1] and src[1]<=upper[1] and src[2]>=lower[2] and src[2]<=upper[2]:
         return True

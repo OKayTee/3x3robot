@@ -62,7 +62,7 @@ def move(moves):
         down(1)
     elif moves == "[":
         down(2)
-    time.sleep(0.5)
+    time.sleep(0.1)
 
 def up(ang):
     if ang == 0:
