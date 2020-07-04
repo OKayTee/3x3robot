@@ -71,11 +71,7 @@ def up(ang):
             if i<10:
                 time.sleep(0.064-0.005*i)
             else:
-                if i<10:
-                time.sleep(0.064-0.005*i)
-            else:
                 time.sleep(0.01)
-        
     elif ang == 1:
         for i in range(100):
             kit1.stepper1.onestep(direction=stepper.BACKWARD, style = stepper.INTERLEAVE)

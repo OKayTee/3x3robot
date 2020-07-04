@@ -38,6 +38,7 @@ def main(argv):
         elif opt == "-h":
             print("-s   -   scramble mode")
             print("-r   -   resolve mode")
+            print("-m   -   manual mode")
             print("-c   -   calibrate mode")
             print("-h   -   display help")
 def solve(algorithm):
