@@ -116,30 +116,6 @@ def down(ang):
 def front(ang):
     if ang == 0:
         for i in range(100):
-            kit2.stepper1.onestep(style = stepper.INTERLEAVE)
-            if i<10:
-                time.sleep(0.064-0.005*i)
-            else:
-                time.sleep(0.01)
-    elif ang == 1:
-        for i in range(100):
-            kit2.stepper1.onestep(direction=stepper.BACKWARD, style = stepper.INTERLEAVE)
-            if i<10:
-                time.sleep(0.064-0.005*i)
-            else:
-                time.sleep(0.01)
-    elif ang == 2:
-        for i in range(200):
-            kit2.stepper1.onestep(style = stepper.INTERLEAVE)
-            if i<10:
-                time.sleep(0.064-0.005*i)
-            else:
-                time.sleep(0.01)
-    kit2.stepper1.release()
-
-def behind(ang):
-    if ang == 0:
-        for i in range(100):
             kit2.stepper2.onestep(style = stepper.INTERLEAVE)
             if i<10:
                 time.sleep(0.064-0.005*i)
@@ -160,6 +136,30 @@ def behind(ang):
             else:
                 time.sleep(0.01)
     kit2.stepper2.release()
+
+def behind(ang):
+    if ang == 0:
+        for i in range(100):
+            kit2.stepper1.onestep(style = stepper.INTERLEAVE)
+            if i<10:
+                time.sleep(0.064-0.005*i)
+            else:
+                time.sleep(0.01)
+    elif ang == 1:
+        for i in range(100):
+            kit2.stepper1.onestep(direction=stepper.BACKWARD, style = stepper.INTERLEAVE)
+            if i<10:
+                time.sleep(0.064-0.005*i)
+            else:
+                time.sleep(0.01)
+    elif ang == 2:
+        for i in range(200):
+            kit2.stepper1.onestep(style = stepper.INTERLEAVE)
+            if i<10:
+                time.sleep(0.064-0.005*i)
+            else:
+                time.sleep(0.01)
+    kit2.stepper1.release()
 
 def left(ang):
     if ang == 0:
